@@ -2,6 +2,8 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import {Globals} from '../../globals';
 import * as moment from 'src/assets/plantilla/vendors/bower_components/moment/moment.js';
+//import * as go from 'src/assets/plantilla/js/go.js';
+import * as go from 'gojs';
 
 import { DatajsonService } from '../../services/datajson.service';
 
@@ -19,6 +21,7 @@ export class DetailcrimeComponent implements OnInit {
 	indicator: any;
 	last: any;
 	asn: any;
+	myDiagram: any;
 
   	constructor(private globals: Globals, private route: ActivatedRoute, private datajsonService: DatajsonService) { }
 
@@ -28,6 +31,23 @@ export class DetailcrimeComponent implements OnInit {
 				this.globals.getUrl = 'crime';
 			}
 		,1000);
+
+		var $$ = go.GraphObject.make;
+
+	    this.myDiagram = $$(go.Diagram, "myDiagramDiv",  // create a Diagram for the DIV HTML element
+        {
+            "undoManager.isEnabled": true  // enable undo & redo
+        });
+
+        this.myDiagram.nodeTemplate = $$(go.Node, "Auto",  // the Shape will go around the TextBlock
+        	$$(go.Shape, "RoundedRectangle", { strokeWidth: 0, fill: "white" },
+          	// Shape.fill is bound to Node.data.color
+          	new go.Binding("fill", "color")),
+        	$$(go.TextBlock,
+          		{ margin: 8 },  // some room around the text
+          		// TextBlock.text is bound to Node.data.key
+          		new go.Binding("text", "key"))
+      	);
 
 		this.crime_id = +this.route.snapshot.paramMap.get('id');
   		
@@ -39,6 +59,17 @@ export class DetailcrimeComponent implements OnInit {
 				this.indicator = dato.attributes.crime_server_url;
 				this.last = moment(dato.attributes.last_seen).format('DD/MM/YYYY h:mm A');
 				this.asn = dato.id;
+				this.myDiagram.model = new go.GraphLinksModel(
+			    [
+				    { key: dato.type, color: "lightblue" },
+				    { key: "195.22.126.203", color: "orange" },
+				    { key: "AZORult", color: "lightgreen" }
+			    ],
+			    [
+			     	{ from: dato.type, to: "195.22.126.203" },
+			      	{ from: "195.22.126.203", to: dato.type },
+			      	{ from: dato.type, to: "AZORult" }
+				]);
 			}
 		);
 
