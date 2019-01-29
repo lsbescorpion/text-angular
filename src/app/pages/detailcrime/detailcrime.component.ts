@@ -32,6 +32,7 @@ export class DetailcrimeComponent implements OnInit {
 			}
 		,1000);
 
+		/**configuracion de gojs **/
 		var $$ = go.GraphObject.make;
 
 	    this.myDiagram = $$(go.Diagram, "myDiagramDiv",  // create a Diagram for the DIV HTML element
@@ -51,6 +52,7 @@ export class DetailcrimeComponent implements OnInit {
 
 		this.crime_id = +this.route.snapshot.paramMap.get('id');
   		
+  		/**asignacion de datos al detail**/
   		this.datajsonService.getCrime(this.crime_id)
 			.subscribe(data => {
 				let dato: any = data;
@@ -72,7 +74,7 @@ export class DetailcrimeComponent implements OnInit {
 				]);
 			}
 		);
-
+		/**	configuracion de easy-pie-chart **/
 		if($('.easy-pie-chart')[0]) {
 	        $('.easy-pie-chart').each(function () {
 	            var value = $(this).data('value');
