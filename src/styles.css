@@ -1,0 +1,8 @@
+@import './assets/plantilla/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css';
+@import './assets/plantilla/vendors/bower_components/animate.css/animate.min.css';
+@import './assets/plantilla/vendors/bower_components/jquery.scrollbar/jquery.scrollbar.css';
+@import './assets/plantilla/vendors/bower_components/fullcalendar/dist/fullcalendar.min.css';
+@import './assets/plantilla/vendors/bower_components/select2/dist/css/select2.min.css';
+@import './assets/plantilla/vendors/flatpickr/flatpickr.min.css';
+@import './assets/plantilla/vendors/bower_components/sweetalert2/dist/sweetalert2.min.css';
+@import './assets/plantilla/css/app.min.css';

@@ -1,0 +1,129 @@
+<header class="content__title">
+    <h1>Dashboard</h1>
+	<small></small>
+</header>
+
+<div class="row stats col-sm-12 text-center">
+    <div style="width: 19%;">
+        <a href="#" routerLink="" (click)='General("crimeservers")'>
+            <div class="stats__item">
+                <div class="stats__chart bg-lime">
+                    <canvas baseChart
+                        class="chart"
+                        [datasets]="datasetscrime"
+                        [labels]="labelscrime"
+                        [options]="optioncrime"
+                        [chartType]="'line'"></canvas>
+                </div>
+    			<div class="stats__info">
+                    <div>
+                        <h2>{{crimeserverlenght}}</h2>
+                        <small>CRIMESERVERS</small>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div style="width: 1.25%;">
+    </div>
+    <div style="width: 19%;">
+        <a href="#" routerLink="" (click)='General("malware")'>
+            <div class="stats__item">
+                <div class="stats__chart bg-lime">
+                    <canvas baseChart
+                        class="chart"
+                        [datasets]="datasetsmalware"
+                        [labels]="labelsmalware"
+                        [options]="optionmalware"
+                        [chartType]="'line'"></canvas>
+                </div>
+    			<div class="stats__info">
+                    <div>
+                        <h2>{{malwarelenght}}</h2>
+                        <small>MALWARE</small>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div style="width: 1.25%;">
+    </div>
+    <div style="width: 19%;">
+        <a href="#" routerLink="" (click)='General("bots")'>
+            <div class="stats__item">
+                <div class="stats__chart bg-lime">
+                    <canvas baseChart
+                        class="chart"
+                        [datasets]="datasetsbot"
+                        [labels]="labelsbot"
+                        [options]="optionbot"
+                        [chartType]="'line'"></canvas>
+                </div>
+    			<div class="stats__info">
+                    <div>
+                        <h2>{{botlenght}}</h2>
+                        <small>BOTS</small>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div style="width: 1.25%;">
+    </div>
+    <div style="width: 19%;">
+        <a href="#" routerLink="" (click)='General("credentials")'>
+            <div class="stats__item">
+                <div class="stats__chart bg-lime">
+                    <canvas baseChart
+                        class="chart"
+                        [datasets]="datasetscredential"
+                        [labels]="labelscredential"
+                        [options]="optioncredential"
+                        [chartType]="'line'"></canvas>
+                </div>
+    			<div class="stats__info">
+                    <div>
+                        <h2>{{credentiallenght}}</h2>
+                        <small>CREDENTIALS</small>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div style="width: 1.25%;">
+    </div>
+    <div style="width: 19%;">
+        <a href="#" routerLink="" (click)='General("cards")'>
+            <div class="stats__item">
+                <div class="stats__chart bg-lime">
+                    <canvas baseChart
+                        class="chart"
+                        [datasets]="datasetscard"
+                        [labels]="labelscard"
+                        [options]="optioncard"
+                        [chartType]="'line'"></canvas>
+                </div>
+    			<div class="stats__info">
+                    <div>
+                        <h2>{{cardlenght}}</h2>
+                        <small>CARDS</small>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <canvas baseChart
+                    class="chart"
+                    [datasets]="datasets"
+                    [labels]="labels"
+                    [options]="option"
+                    [chartType]="'line'"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
