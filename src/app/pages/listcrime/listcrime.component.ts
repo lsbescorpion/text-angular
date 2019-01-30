@@ -11,22 +11,22 @@ declare var $: any;
 })
 export class ListcrimeComponent implements OnInit {
 
-	dtOptions: any = {};
-	table: any = '';
+    dtOptions: any = {};
+    table: any = '';
 
   	constructor(private globals: Globals, private router: Router) { }
 
   	ngOnInit() {
-  		setTimeout(() => 
-			{
-				this.globals.getUrl = 'crime';
-			}
-		,1000);
-		this.table = $('#data-table').DataTable(this.fillTable());
+  		  setTimeout(() => 
+			  {
+				    this.globals.getUrl = 'crime';
+			  }
+		    ,1000);
+		    this.table = $('#data-table').DataTable(this.fillTable());
   	}
 
   	ngAfterViewInit(): void {
-  		const that = this;
+  		  const that = this;
 
         $("body").on("click", "[data-table-action]", function(a) {
             a.preventDefault();
@@ -43,44 +43,44 @@ export class ListcrimeComponent implements OnInit {
         })
 
         $('#data-table').on( 'click', '.btn-details', function () {
-			that.router.navigate(['/detailcrime/'+$(this).attr('date')]);
-	    });
-	}
-
+			      that.router.navigate(['/detailcrime/'+$(this).attr('date')]);
+	      });
+	  }
+    /** funcion para el LLenado de la tabla **/
   	fillTable() {
-    	return this.dtOptions = {
+    	  return this.dtOptions = {
   	      	pageLength: 10,
   	      	autoWidth: !1,
             responsive: !0,
             "destroy": true,
-        	language: {
-          		"url": "src/assets/Spanish.json",
-          		 searchPlaceholder: "Escriba parametro a filtrar..."
-      		},
-        	ajax: 'assets/data/crimeserver_list/crime_servers_list.json',
-        	columns: [
-        		{ title: 'Seen', data: 'attributes.first_seen', "type": "date", "render": function ( data, type, row, meta ) {	return moment(data).format('DD/MM/YYYY h:mm A');}},
-        		{ title: 'Url', data: 'attributes.crime_server_url'},
-        		{ title: 'type', data: 'attributes.main_type'},
-        		{ title: 'Subtype', data: 'attributes.subtype_name'},
-        		{ title: 'Status', data: 'attributes.status', "render": function ( data, type, row, meta ) {return (data == "online" ? '<i class="zmdi zmdi-cloud-done">' : '<i class="zmdi zmdi-cloud-off">')}},
-        		{ title: 'Details', data: 'id', "render": function ( data, type, row, meta ) {
-        			return	'<button date="'+data+'" class="btn btn-light btn--icon btn-sm btn-details"><i class="actions__item zmdi zmdi-zoom-in"></i></button>';
-				}}
-        	],
+        	  language: {
+          		  "url": "src/assets/Spanish.json",
+          		  searchPlaceholder: "Escriba parametro a filtrar..."
+      		  },
+        	  ajax: 'assets/data/crimeserver_list/crime_servers_list.json',
+        	  columns: [
+        		    { title: 'Seen', data: 'attributes.first_seen', "type": "date", "render": function ( data, type, row, meta ) {	return moment(data).format('DD/MM/YYYY h:mm A');}},
+        		    { title: 'Url', data: 'attributes.crime_server_url'},
+        		    { title: 'type', data: 'attributes.main_type'},
+        		    { title: 'Subtype', data: 'attributes.subtype_name'},
+        		    { title: 'Status', data: 'attributes.status', "render": function ( data, type, row, meta ) {return (data == "online" ? '<i class="zmdi zmdi-cloud-done">' : '<i class="zmdi zmdi-cloud-off">')}},
+        		    { title: 'Details', data: 'id', "render": function ( data, type, row, meta ) {
+        			      return	'<button date="'+data+'" class="btn btn-light btn--icon btn-sm btn-details"><i class="actions__item zmdi zmdi-zoom-in"></i></button>';
+				        }}
+        	  ],
             dom: '<"dataTables__top"lfB>rt<"dataTables__bottom"ip><"clear">',
             buttons: [{
-                  extend: "excelHtml5",
-                  title: "Export Data"
+                extend: "excelHtml5",
+                title: "Export Data"
             }, {
-                  extend: "csvHtml5",
-                  title: "Export Data"
+                extend: "csvHtml5",
+                title: "Export Data"
             }, {
-                  extend: "print",
-                  title: "Material Admin"
+                extend: "print",
+                title: "Material Admin"
             }],
       			"initComplete": function () {
-      	            $(this).closest(".dataTables_wrapper").find(".dataTables__top").prepend('<div class="dataTables_buttons hidden-sm-down actions"><span class="actions__item zmdi zmdi-print" data-table-action="print" /><span class="actions__item zmdi zmdi-fullscreen" data-table-action="fullscreen" /><div class="dropdown actions__item"><i data-toggle="dropdown" class="zmdi zmdi-download" /><ul class="dropdown-menu dropdown-menu-right"><a href="" class="dropdown-item" data-table-action="excel">Excel (.xlsx)</a><a href="" class="dropdown-item" data-table-action="csv">CSV (.csv)</a></ul></div></div>')
+      	        $(this).closest(".dataTables_wrapper").find(".dataTables__top").prepend('<div class="dataTables_buttons hidden-sm-down actions"><span class="actions__item zmdi zmdi-print" data-table-action="print" /><span class="actions__item zmdi zmdi-fullscreen" data-table-action="fullscreen" /><div class="dropdown actions__item"><i data-toggle="dropdown" class="zmdi zmdi-download" /><ul class="dropdown-menu dropdown-menu-right"><a href="" class="dropdown-item" data-table-action="excel">Excel (.xlsx)</a><a href="" class="dropdown-item" data-table-action="csv">CSV (.csv)</a></ul></div></div>')
             },
         };
   	}
